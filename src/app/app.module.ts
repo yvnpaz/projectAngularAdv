@@ -6,11 +6,15 @@ import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { AppAngularComponent } from './app-angular/app-angular.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    AppAngularComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -19,6 +23,6 @@ import { EmployeeComponent } from './employee/employee.component';
     routing
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppAngularComponent,AppComponent]
 })
 export class AppModule { }
