@@ -1,14 +1,22 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { EmployeeComponent } from './employee/employee.component'
+import { HomeComponent } from './home/home.component';
+import { ErrorComponent } from './error/error.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
 const appRoutes: Routes = [
     {
-        path: '', component: EmployeeComponent
+        path: '', component: HomeComponent
     },
     {
-        path: 'employee', component: EmployeeComponent
+        path: 'home', component: HomeComponent
+    },
+    {
+        path: 'products', component: ProductListComponent
+    },
+    {
+        path: '**', component: ErrorComponent
     }
 ];
 

@@ -1,0 +1,4 @@
+.activated {
+    text-decoration: none !important;
+    border-bottom: 0.2rem solid red !important;
+}

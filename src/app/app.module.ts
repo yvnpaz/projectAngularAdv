@@ -2,20 +2,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { routing } from './app.routing';
+
+// Routes
+import { routing, appRoutingProviders } from './app.routing';
 
 import { AppComponent } from './app.component';
 // Components
-import { EmployeeComponent } from './employee/employee.component';
 import { AppAngularComponent } from './app-angular/app-angular.component';
 import { HomeComponent } from './home/home.component';
+import { ErrorComponent } from './error/error.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeComponent,
     AppAngularComponent,
-    HomeComponent
+    HomeComponent,
+    ErrorComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +27,9 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     routing
   ],
-  providers: [],
+  providers: [
+    appRoutingProviders
+  ],
   bootstrap: [AppAngularComponent,AppComponent]
 })
 export class AppModule { }

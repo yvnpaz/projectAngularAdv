@@ -41,6 +41,10 @@
     text-decoration: none;
 }
 
+.separationButton {
+    margin-right: 1rem;
+}
+
 #footer {
     margin-top: 5rem;
     padding-top: 2rem;
