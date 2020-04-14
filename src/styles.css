@@ -4,3 +4,7 @@ body {
     display: flex;
     justify-content: center;
 }
+
+.width_w {
+    width: 50%;
+}

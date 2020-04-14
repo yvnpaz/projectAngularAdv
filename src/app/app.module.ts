@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
+// Components
 import { EmployeeComponent } from './employee/employee.component';
 import { AppAngularComponent } from './app-angular/app-angular.component';
 import { HomeComponent } from './home/home.component';
