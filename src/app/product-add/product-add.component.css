@@ -1,0 +1,12 @@
+#form-product label {
+    margin-top: 1rem;
+}
+
+.form-control-responsive {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-control-responsive-text {
+    padding-top: 0.28rem;
+}

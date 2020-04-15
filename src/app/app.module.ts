@@ -12,6 +12,7 @@ import { AppAngularComponent } from './app-angular/app-angular.component';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { ProductAddComponent } from './product-add/product-add.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProductListComponent } from './product-list/product-list.component';
     AppAngularComponent,
     HomeComponent,
     ErrorComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductAddComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,6 @@ import { ProductListComponent } from './product-list/product-list.component';
   providers: [
     appRoutingProviders
   ],
-  bootstrap: [AppAngularComponent,AppComponent]
+  bootstrap: [AppAngularComponent]
 })
 export class AppModule { }

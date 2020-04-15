@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GLOBAL } from '../services/global';
 
 @Component({
   selector: 'app-app-angular',
@@ -8,8 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class AppAngularComponent implements OnInit {
 
   title = "Course Angular 4";
+  header_color:string;
 
-  constructor() { }
+  constructor() {
+    this.header_color = GLOBAL.header_color;
+   }
 
   ngOnInit(): void {
   }
