@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductAddComponent } from './product-add/product-add.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 const appRoutes: Routes = [
     {
@@ -18,6 +19,9 @@ const appRoutes: Routes = [
     },
     {
         path: 'addProduct', component: ProductAddComponent
+    },
+    {
+        path: 'product/:id', component: ProductDetailComponent
     },
     {
         path: '**', component: ErrorComponent

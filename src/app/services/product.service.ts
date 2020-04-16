@@ -15,12 +15,24 @@ export class ProductService {
 
     /**
      * Function to extract all products
-     * For the map you have to run: 'npm install --save rxjs-compat'
+     * Warning: For the map you have to run: 'npm install --save rxjs-compat'
      * 
      * @param 
      */
     getProduct(): Observable<any> {
         return this._http.get(this.url + 'products').pipe(
+            map(data => this.extractData(data)),
+            catchError(this.handleError)
+        );
+    }
+
+    /**
+     * Function to extract one product
+     * 
+     * @param id
+     */
+    getOneProduct(id): Observable<any> {
+        return this._http.get(this.url+'product/'+id).pipe(
             map(data => this.extractData(data)),
             catchError(this.handleError)
         );
