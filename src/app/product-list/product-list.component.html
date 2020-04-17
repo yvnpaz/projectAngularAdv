@@ -17,11 +17,18 @@
                 <div class="caption">
                     <h3>{{prod.name}}</h3>
                     <p>{{prod.price}} €</p>
-                    <p>
-                        <a [routerLink]="['/product', prod.id]" class="btn btn-sm btn-primary"> See </a>
-                        <a href="#" class="btn btn-sm btn-warning"> Edit </a>
-                        <a href="#" class="btn btn-sm btn-danger"> Delete </a>
-                    </p>
+                    <div class="buttonsCrud" *ngIf="confirmed != prod.id">
+                        <a [routerLink]="['/product', prod.id]" class="btn btn-primary"> See </a>
+                        <a [routerLink]="['/editProduct', prod.id]" class="btn btn-warning"> Edit </a>
+                        <a class="btn btn-danger" (click)="deleteConfirmed(prod.id)"> Delete </a>
+                    </div>
+                    <div class="sure" *ngIf="confirmed==prod.id">
+                        <a class="btn btn-md btn-danger" (click)="onDeleteProduct(prod.id)"> I want delete it </a>
+                        <a class="btn btn-md btn-secondary" (click)="cancelConfirmed()"> Cancel </a>
+                        <!-- <p>Are you sure to delete this product?</p> -->
+                        <!-- <a class="btn btn-md btn-danger" (click)="onDeleteProduct(prod.id)"> Delete </a>
+                        <a class="btn btn-md btn-secondary" (click)="cancelConfirmed()"> Cancel </a> -->
+                    </div>
                 </div>
             </div>
         </div>

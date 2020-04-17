@@ -19,7 +19,7 @@ export class ProductService {
      * 
      * @param 
      */
-    getProduct(): Observable<any> {
+    getProducts(): Observable<any> {
         return this._http.get(this.url + 'products').pipe(
             map(data => this.extractData(data)),
             catchError(this.handleError)
@@ -32,7 +32,7 @@ export class ProductService {
      * @param id
      */
     getOneProduct(id): Observable<any> {
-        return this._http.get(this.url+'product/'+id).pipe(
+        return this._http.get(this.url + 'product/' + id).pipe(
             map(data => this.extractData(data)),
             catchError(this.handleError)
         );
@@ -52,21 +52,44 @@ export class ProductService {
             .pipe(map(data => this.extractData(data)));
     }
 
-    makeFileRequest(url: string, params: Array<string>, files: Array<File>){
-        console.log("Length files: "+ files.length);
+    /**
+    * Function to edit a product
+    * 
+    * @param id
+    * @param product
+    */
+    editProduct(id, product: Product): Observable<any> {
+        let json = JSON.stringify(product);
+        let params = "json=" + json;
+        return this._http.post(this.url + 'update-product/' + id, params, { headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' }) })
+            .pipe(map(data => this.extractData(data)));
+
+        // return this._http.post(`${this.url}update-product/${id}`, { headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' }) })
+        //     .pipe(map(data => this.extractData(data)));
+    }
+
+    deleteProduct(id): Observable<any> {
+        return this._http.get(this.url + 'deleteProduct/' + id).pipe(
+            map(data => this.extractData(data)),
+            catchError(this.handleError)
+        );
+    }
+
+    makeFileRequest(url: string, params: Array<string>, files: Array<File>) {
+        console.log("Length files: " + files.length);
         return new Promise((resolve, reject) => {
             var formData: any = new FormData();
             var xhr = new XMLHttpRequest();
 
-            for(var i=0; i <= files.length-1; i++){
+            for (var i = 0; i <= files.length - 1; i++) {
                 formData.append('uploads[]', files[i], files[i].name);
             }
 
-            xhr.onreadystatechange = function(){
-                if(xhr.readyState == 4){
-                    if(xhr.status == 200){
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
                         resolve(xhr.response);
-                    }else{
+                    } else {
                         reject(xhr.response);
                     }
                 }
@@ -74,7 +97,7 @@ export class ProductService {
             xhr.open("POST", url, true);
             xhr.send(formData);
         });
-        
+
     }
 
     /**

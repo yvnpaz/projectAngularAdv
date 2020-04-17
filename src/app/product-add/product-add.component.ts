@@ -16,6 +16,7 @@ export class ProductAddComponent implements OnInit {
   public titleAddProduct: string;
   public product: Product;
   public filesToUpload: any;
+  public isEdit;
   
   constructor(private _productService: ProductService,
     private _router: Router) {
@@ -25,12 +26,13 @@ export class ProductAddComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("Component addProduct.ts loaded...");
+    this.isEdit = false;
   }
 
   onSubmit() {
     console.log(this.product);
 
-    if (this.filesToUpload.length >= 1) {
+    if (this.filesToUpload && this.filesToUpload.length >= 1) {
       this._productService.makeFileRequest(GLOBAL.url + 'upload-file', [], this.filesToUpload)
         .then((result: any) => {
           let res = JSON.parse(result);

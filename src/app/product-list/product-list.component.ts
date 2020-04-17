@@ -11,20 +11,48 @@ import { Product } from '../models/product';
 })
 export class ProductListComponent implements OnInit {
 
-  public titleProduct:string;
-  public products:Product[];
+  public titleProduct: string;
+  public products: Product[];
+  public confirmed;
 
   constructor(
-      private _route: ActivatedRoute,
-      private _router: Router,
-      private _productService: ProductService
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _productService: ProductService
   ) {
-      this.titleProduct = "List of products"
-   }
+    this.titleProduct = "List of products";
+    this.confirmed = null;
+  }
 
   ngOnInit(): void {
+    this.getProducts();
+  }
 
-    this._productService.getProduct().subscribe(
+  onDeleteProduct(id) {
+    this._productService.deleteProduct(id).subscribe(
+      result => {
+        if (result !== null) {
+          this.getProducts();
+        }else{
+          alert("Delete error");
+        }
+      },
+      err => {
+        console.log("Error message product list delete " + err.message);
+      }
+    );
+  }
+
+  deleteConfirmed(id){
+    this.confirmed = id;
+  }
+
+  cancelConfirmed(){
+    this.confirmed = null;
+  }
+
+  getProducts() {
+    this._productService.getProducts().subscribe(
       result => {
         this.products = result.data;
       },

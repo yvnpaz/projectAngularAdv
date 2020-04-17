@@ -25,6 +25,9 @@
         </span>
     </div>
     <label>Image: </label>
+    <div *ngIf="isEdit">
+        <img src="http://localhost:8089/uploads/{{product.image}}" class="product-image-edit" />
+    </div>
     <input type="file" class="form-control" (change)="fileChangeEvent($event)"/>
 
     <br>

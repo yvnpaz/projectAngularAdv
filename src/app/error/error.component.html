@@ -2,7 +2,7 @@
     <div class="jumbotron">
         <h2>{{errorTitle}}</h2>
         <p>The page that you try load don¡t exist. Pulse in theses buttons. </p>
-        <a href="#" class="btn btn-lg btn-primary separationButton">See products</a>
-        <a href="#" class="btn btn-lg btn-success">Add products</a>
+        <a [routerLink]="['/products']" class="btn btn-lg btn-primary separationButton">See products</a>
+        <a [routerLink]="['/addProduct']" class="btn btn-lg btn-success">Add products</a>
     </div>
 </div>
