@@ -46,8 +46,8 @@ export class ProductService {
     addProduct(product: Product) {
         let json = JSON.stringify(product);
         let params = 'json=' + json;
-        // let headers = new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded'});
-
+        // let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        // return this.http.post(this.url+'addProduct', params, {headers: headers});
         return this._http.post(this.url + 'addProduct', params, { headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' }) })
             .pipe(map(data => this.extractData(data)));
     }
